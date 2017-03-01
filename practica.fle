@@ -1,0 +1,113 @@
+%%
+
+%class practica
+%standalone
+%8bit
+
+%{
+  public int cont;
+%}
+
+%init{
+	cont=0;
+%init}
+
+%eof{
+	System.out.println("Naturales = "+cont);
+%eof}
+
+
+%%
+//Entero
+[+|-]?[0-9]+ {System.out.println("Entero: " + yytext()); }
+
+//Boolean
+True|False {System.out.println("Boolean: "+yytext());}
+
+//expreArimetica
+//[+|-|*|/] {System.out.println("Expresion aritmetica" + yytext());}
+"+" {System.out.println("Expresion aritmetica sumar");}
+"-" {System.out.println("Expresion aritmetica restar");}
+"*" {System.out.println("Expresion aritmetica multiplicar");}
+"/" {System.out.println("Expresion aritmetica dividir");}
+
+//expreRelacional
+"<" {System.out.println("Expresion relacional menor que");}
+"<=" {System.out.println("Expresion relacional menor igual que");}
+">" {System.out.println("Expresion relacional mayor que");}
+">=" {System.out.println("Expresion relacional mayor igual que");}
+"==" {System.out.println("Expresion relacional igual que");}
+"!=" {System.out.println("Expresion relacional distinto que");}
+
+//expreLogica
+"&&" {System.out.println("Expresion logica and");}
+"||" {System.out.println("Expresion logica or");}
+"!" {System.out.println("Expresion logica not");}
+
+//simbolos
+";" {System.out.println("simbolo puntoComa");}
+":" {System.out.println("simbolo dosPuntos");}
+"(" {System.out.println("simbolo parentesisApertura");}
+")" {System.out.println("simbolo parentesisCierre");}
+"{" {System.out.println("simbolo llaveApertura");}
+"}" {System.out.println("simbolo llaveCierre");}
+"[" {System.out.println("simbolo corcheteApertura");}
+"]" {System.out.println("simbolo corcheteCierre");}
+"?" {System.out.println("simbolo interrogacion");}
+
+
+//cabecera reconoce "public static"
+public[ \t]static {System.out.println("Cabecera metodo");}
+
+//Variable
+[a-z]([a-z]|[A-Z]|[0-9]|[_])* {System.out.println("Variable");}
+
+//Return coge la cadena "return "
+return[ \t] {System.out.println("Return");}
+
+//Asignacion
+[a-z]([a-z]|[A-Z]|[0-9]|[_])*\++ {System.out.println("Incremento");}
+[a-z]([a-z]|[A-Z]|[0-9]|[_])*\-- {System.out.println("Decremento");}
+
+
+
+
+
+//pruebas
+//^[a-z]([a-z]|[A-Z]|[0-9]|[_])* {System.out.println(yytext());}
+//[A|a]* {System.out.println(yytext());}
+
+
+
+
+
+
+/*
+
+---------- PENDIENTE -----------
+
+//Asignacion
+  expresion
+  metodo
+
+//Bucles
+  while
+
+//Llamada metodo
+
+//Return
+
+//Tipos variables.
+
+"(\)" {System.out.println("simbolo backslash");}
+
+*/
+
+
+
+
+
+
+//[<|</=|>|>/=|=/=|!/=] {System.out.println("Expresion relacional"+ yytext());}
+//[&/&||/||!] {System.out.println("Expresion logica"+ yytext());}
+.   {}

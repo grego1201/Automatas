@@ -1,0 +1,17 @@
++ - * /
+< <= > >= == !=
+&& || !
+public static
+public
+static
+publicstatic
+1 2 +1 -2
+
+_dsJj3d
+_dsJj3d++
+_dsJj3d--
+_dsJj3d+
+_dsJj3d-
+
+return \?
+\
