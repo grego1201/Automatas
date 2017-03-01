@@ -66,6 +66,8 @@ public[ \t]static {System.out.println("Cabecera metodo");}
 return[ \t] {System.out.println("Return");}
 
 //Asignacion
+
+
 [a-z]([a-z]|[A-Z]|[0-9]|[_])*\++ {System.out.println("Incremento");}
 [a-z]([a-z]|[A-Z]|[0-9]|[_])*\-- {System.out.println("Decremento");}
 
@@ -77,7 +79,26 @@ return[ \t] {System.out.println("Return");}
 //^[a-z]([a-z]|[A-Z]|[0-9]|[_])* {System.out.println(yytext());}
 //[A|a]* {System.out.println(yytext());}
 
+/*
 
+--------- POR PROBAR ---------
+
+//Asignacion
+variable=[expresion]* {System.out.println("Asignacion");}
+
+//expresion
+// preguntar si la asignacion de un boolean o entero tambien vale ya que dice una
+// expresion o metodo.
+ [variable|boolean|entero|incremento|decremento|metodo]([expreArit|expreLog|expreRel][variable|boolean|entero|incremento|decremento|metodo])* {System.out.println("Expresion");}
+
+//llamada metodo
+// no estoy seguro si los metodos en java pueden contener numeros y si tienen que empezar por minuscula obligatorio
+// nombre(expresion*)
+[a-z|A-Z]([a-z]|[A-Z]|[0-9]|[_])*"("[expresion,]*")"
+
+
+
+*/
 
 
 
@@ -86,19 +107,12 @@ return[ \t] {System.out.println("Return");}
 
 ---------- PENDIENTE -----------
 
-//Asignacion
-  expresion
-  metodo
-
 //Bucles
   while
 
 //Llamada metodo
 
-//Return
-
-//Tipos variables.
-
+//simbolos
 "(\)" {System.out.println("simbolo backslash");}
 
 */
