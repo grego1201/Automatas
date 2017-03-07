@@ -7,6 +7,9 @@ static
 publicstatic
 1 2 +1 -2
 
+truetruefalse false true
+
+
 _dsJj3d
 _dsJj3d++
 _dsJj3d--
@@ -15,3 +18,16 @@ _dsJj3d-
 
 return \?
 \
+
+
+hola=+3
+
+1+hola-2
+
+++loquesea+2-3
+
+hola = 2-1+loquesea++
+
+
+while
+whilel  
