@@ -17,12 +17,23 @@
 %eof}
 
 
+/* Macros */
+
+variable = [a-z]([a-z]|[A-Z]|[0-9]|[_])*
+entero = [+|-]?[0-9]+
+boolean = true|false
+expresion = ([+|-]?([+|-]{2}{variable}|{variable}|{entero}|{variable}[+|-]{2}))+
+
 %%
+// Bucle while
+while {System.out.println("Bucle while: " + yytext());}
+
+
 //Entero
-[+|-]?[0-9]+ {System.out.println("Entero: " + yytext()); }
+{entero} {System.out.println("Entero: " + yytext()); }
 
 //Boolean
-True|False {System.out.println("Boolean: "+yytext());}
+{boolean} {System.out.println("Boolean: "+yytext());}
 
 //expreArimetica
 //[+|-|*|/] {System.out.println("Expresion aritmetica" + yytext());}
@@ -57,19 +68,25 @@ True|False {System.out.println("Boolean: "+yytext());}
 
 
 //cabecera reconoce "public static"
-public[ \t]static {System.out.println("Cabecera metodo");}
+public[" "]+static {System.out.println("Cabecera metodo");}
 
 //Variable
-[a-z]([a-z]|[A-Z]|[0-9]|[_])* {System.out.println("Variable");}
+{variable} {System.out.println("Variable: " + yytext());}
 
 //Return coge la cadena "return "
-return[ \t] {System.out.println("Return");}
+return[" "]+ {System.out.println("Return");}
 
 //Asignacion
+{variable}\[++] {System.out.println("Post-Incremento");}
+{variable}\[--] {System.out.println("Post-Decremento");}
+[++]\{variable} {System.out.println("Pre-Incremento");}
+[--]\{variable} {System.out.println("Pre-Decremento");}
+{variable}[" "]*[=][" "]*{expresion} {System.out.println("Asignacion expresion: " + yytext());}
 
 
-[a-z]([a-z]|[A-Z]|[0-9]|[_])*\++ {System.out.println("Incremento");}
-[a-z]([a-z]|[A-Z]|[0-9]|[_])*\-- {System.out.println("Decremento");}
+
+//Expresion aritmetica
+{expresion} {System.out.println("Expresion aritmetica: "+yytext());}
 
 
 
@@ -79,40 +96,19 @@ return[ \t] {System.out.println("Return");}
 //^[a-z]([a-z]|[A-Z]|[0-9]|[_])* {System.out.println(yytext());}
 //[A|a]* {System.out.println(yytext());}
 
-/*
-
---------- POR PROBAR ---------
-
-//Asignacion
-variable=[expresion]* {System.out.println("Asignacion");}
-
-//expresion
-// preguntar si la asignacion de un boolean o entero tambien vale ya que dice una
-// expresion o metodo.
- [variable|boolean|entero|incremento|decremento|metodo]([expreArit|expreLog|expreRel][variable|boolean|entero|incremento|decremento|metodo])* {System.out.println("Expresion");}
-
-//llamada metodo
-// no estoy seguro si los metodos en java pueden contener numeros y si tienen que empezar por minuscula obligatorio
-// nombre(expresion*)
-[a-z|A-Z]([a-z]|[A-Z]|[0-9]|[_])*"("[expresion,]*")"
-
-
-
-*/
-
-
-
 
 /*
 
 ---------- PENDIENTE -----------
+
+//Asignacion
+  metodo
 
 //Bucles
   while
 
 //Llamada metodo
 
-//simbolos
 "(\)" {System.out.println("simbolo backslash");}
 
 */
